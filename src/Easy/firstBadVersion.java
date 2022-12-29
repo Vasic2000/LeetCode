@@ -5,8 +5,8 @@ public class firstBadVersion {
         System.out.println(firstBadVersion(2126753390));
     }
 
-    public static boolean isBadVersion(int version) {
-        if (version >= 1702766718)
+    public static boolean isBadVersion(long version) {
+        if (version >= 2126753390)
             return true;
         else
             return false;
@@ -29,10 +29,10 @@ public class firstBadVersion {
 
         long first = 0;
         long last = n;
-        int firstVersion = n/2;
+        long firstVersion = n/2;
 
         while(first < last) {
-            firstVersion = (int)(last + first)/2;
+            firstVersion = (last + first)/2;
                 if(isBadVersion(firstVersion)) {
                     last = firstVersion;
                 } else {
