@@ -1,6 +1,6 @@
-package Easy;
+package Medium;
 
-public class MiddleOfTheLinkedList {
+public class RemoveNthNodeFromList {
 
     public static void main(String[] args) {
         ListNode list1 = new ListNode(1,
@@ -13,24 +13,36 @@ public class MiddleOfTheLinkedList {
         ListNode list4 = new ListNode(1, new ListNode(2));
 
         printList(list1);
-        printList(middleNode(list1));
+        printList(removeNthFromEnd(list1, 2));
 
         printList(list2);
-        printList(middleNode(list2));
+        printList(removeNthFromEnd(list2, 3));
 
         printList(list3);
-        printList(middleNode(list3));
+        printList(removeNthFromEnd(list3, 1));
 
         printList(list4);
-        printList(middleNode(list4));
+        printList(removeNthFromEnd(list4, 1));
 
     }
+
+    private static void printList(ListNode head) {
+        ListNode curr = head;
+        System.out.print("{");
+        while (curr.next != null) {
+            System.out.print(curr.val + ", ");
+            curr = curr.next;
+        }
+        System.out.println(curr.val + "}");
+    }
+
 
     public static class ListNode {
         int val;
         ListNode next;
 
-        ListNode() {}
+        ListNode() {
+        }
 
         ListNode(int val) {
             this.val = val;
@@ -42,7 +54,17 @@ public class MiddleOfTheLinkedList {
         }
     }
 
-    public static ListNode middleNode(ListNode head) {
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        if(checkTheCondition(head, n)) {
+            head.next = head.next.next;
+        }
+        else {
+            removeNthFromEnd(head.next, n);
+        }
+        return head;
+    }
+
+    private static boolean checkTheCondition(ListNode head, int n) {
         int depth = 1;
         ListNode curr = head;
 
@@ -50,23 +72,10 @@ public class MiddleOfTheLinkedList {
             depth++;
             curr = curr.next;
         }
-        int target = depth / 2;
 
-        depth = 1;
-        while(target >= depth) {
-            depth++;
-            head = head.next;
-        }
-        return head;
-    }
-
-    private static void printList(ListNode head) {
-        ListNode curr = head;
-        System.out.print("{");
-        while(curr.next != null) {
-            System.out.print(curr.val + ", ");
-            curr = curr.next;
-        }
-        System.out.println(curr.val + "}");
+        if(depth == n)
+            return true;
+        else
+            return false;
     }
 }
