@@ -45,7 +45,7 @@ public class Solution {
 
     private static List<Long> readList(BufferedReader reader) throws IOException {
         List<Long> list = new ArrayList<>();
-        for (String s : reader.readLine().strip().split(" ")) {
+        for (String s : reader.readLine().split(" ")) {
             list.add(Long.parseLong(s));
         }
         return list;
