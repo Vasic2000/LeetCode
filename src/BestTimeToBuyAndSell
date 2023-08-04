@@ -1,0 +1,156 @@
+public class BestTimeToBuyAndSellStock {
+    public static void main(String[] args) {
+        int[] month1 = {7,1,5,3,6,4};
+        int[] month2 = {7,6,4,3,1};
+        int[] month3 = {1,1,8,11,6,4,2,4,120};
+        int[] month4 = {7,11,5,3,2,4,1,7,1,5,1,6,4};
+        int[] month5 = {4,7};
+        int[] month6 = {7,4};
+        int[] month7 = {3,2,6,5,0,3};
+
+        System.out.println(maxProfit(month1));
+        System.out.println(maxProfit(month2));
+        System.out.println(maxProfit(month3));
+        System.out.println(maxProfit(month4));
+        System.out.println(maxProfit(month5));
+        System.out.println(maxProfit(month6));
+        System.out.println(maxProfit(month7));
+    }
+
+    public static int maxProfit(int[] prices) {
+        //      Corner case
+        if(prices.length <= 1) {
+            return 0;
+        }
+
+        int maxProfit = 0;
+
+//Варик 1 Time Limit Exceeded
+//        for(int i = 0; i < prices.length - 1; i++) {
+//            for (int j = i + 1; j < prices.length; j++) {
+//                if((prices[j] - prices[i]) > maxProfit)
+//                    maxProfit = prices[j] - prices[i];
+//            }
+//        }
+
+
+//Варик 2 Не рабочий
+//        int left = 0, profit;
+//        int right = prices.length - 1;
+//
+//        while(left < right) {
+//            if(prices[left] >= prices [left +1]) {
+//                if(left < right) {
+//                    left++;
+//                }
+//            }
+//
+//            if(prices[right] <= prices[right - 1]) {
+//                if(left < right) {
+//                right--;
+//                }
+//            }
+//            profit = prices[right] - prices[left];
+//            if(profit > maxProfit) {
+//                maxProfit = profit;
+//            }
+//            left++;
+//        }
+
+//      Варик 3 Не рабочий
+
+//        int left = 0, profit;
+//        int right = prices.length - 1;
+//
+//        while(left < right) {
+//            if(prices[left] >= prices [left +1]) {
+//                if(left < right) {
+//                    left++;
+//                }
+//            }
+//
+//            if(prices[right] <= prices[right - 1]) {
+//                if(left < right) {
+//                right--;
+//                }
+//            }
+//
+//            profit = prices[right] - prices[left];
+//            if(profit > maxProfit) {
+//                maxProfit = profit;
+//            }
+//            left++;
+//
+//            if(left < right) {
+//                if (prices[left] >= prices[left + 1]) {
+//                    if (left < right) {
+//                        left++;
+//                    }
+//                }
+//
+//                if (prices[right] <= prices[right - 1]) {
+//                    if (left < right) {
+//                        right--;
+//                    }
+//                }
+//
+//                profit = prices[right] - prices[left];
+//                if (profit > maxProfit) {
+//                    maxProfit = profit;
+//                }
+//                right--;
+//            }
+//        }
+
+
+//      Варик 4 Time Limit Exceeded
+
+//        int left = 0;
+//        int right = 1;
+//        int profit;
+//
+//        while (left < prices.length - 1) {
+//            profit = prices[right] - prices[left];
+//            if (profit > maxProfit) {
+//                maxProfit = profit;
+//            }
+//            if(right < prices.length - 1) {
+//                right++;
+//            } else {
+//                left++;
+//                right = left + 1;
+//            }
+//        }
+
+        int left = 0;
+        int right = 1;
+        int profit;
+        boolean leftShort = true;
+
+        while (left < prices.length - 1) {
+            while(leftShort && left < prices.length - 2) {
+                if(prices[left] > prices[left + 1]) {
+                    left++;
+                }
+                else {
+                    leftShort = false;
+                }
+            }
+
+            profit = prices[right] - prices[left];
+            if (profit > maxProfit) {
+                maxProfit = profit;
+            }
+
+            if(right < prices.length - 1) {
+                right++;
+            } else {
+                left++;
+                leftShort = true;
+                right = left + 1;
+            }
+        }
+
+        return maxProfit;
+    }
+}
