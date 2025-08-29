@@ -1,6 +1,6 @@
 package Easy;
 
-public class reverseString2 {
+public class ReverseString2 {
     public static void main(String[] args) {
         String s1 = "abcdefg";
         String s2 = "abcd";
