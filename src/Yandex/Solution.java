@@ -28,8 +28,6 @@ public class Solution {
             }
             sum = Math.max(tempSum, sum);
         }
-
-
         return sum;
     }
 
