@@ -1,5 +1,4 @@
-package Easy;
-//TASK.938
+package Easy;//TASK.938
 
 public class RangeSumOfBST {
     public static void main(String[] args) {
