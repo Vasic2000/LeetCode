@@ -12,9 +12,28 @@ public class CheckIfTwoStringArraysAreEquivalent {
         String [] word5 = {"abc", "d", "defg"};
         String [] word6 = {"abcddefg"};
 
-        System.out.println(arrayStringsAreEqual(word1, word2));
-        System.out.println(arrayStringsAreEqual(word3, word4));
-        System.out.println(arrayStringsAreEqual(word5, word6));
+        printArrStr(word1);
+        System.out.print(" + ");
+        printArrStr(word2);
+        System.out.println(" are " + arrayStringsAreEqual(word1, word2));
+
+        printArrStr(word3);
+        System.out.print(" + ");
+        printArrStr(word4);
+        System.out.println(" are " + arrayStringsAreEqual(word3, word4));
+
+        printArrStr(word5);
+        System.out.print(" + ");
+        printArrStr(word6);
+        System.out.println(" are " + arrayStringsAreEqual(word5, word6));
+    }
+
+    private static void printArrStr(String[] word) {
+        System.out.print("{");
+        for (int i = 0; i < word.length-1; i++) {
+            System.out.print(word[i] + ",");
+        }
+        System.out.print(word[word.length - 1] + "}");
     }
 
     private static boolean arrayStringsAreEqual(String[] word1, String[] word2) {
