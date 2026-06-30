@@ -1,5 +1,6 @@
 package Easy;
 //TASK.349
+//По одной цифре, которая повторяется в двух массивах
 
 import java.util.HashSet;
 import java.util.Set;

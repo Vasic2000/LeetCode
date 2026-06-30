@@ -16,12 +16,16 @@ public class ListNode {
         this.next = next;
     }
 
-    public static void printListNode(ListNode list1) {
-        System.out.print("[" + list1.val);
-        while (list1.next != null) {
-            list1 = list1.next;
-            System.out.print("," + list1.val);
+    public static void printListNode(ListNode list){
+        if(list == null) {
+            System.out.println("{null}");
+        } else {
+            System.out.print("{" + list.val);
+            while (list.next != null) {
+                System.out.print(", " + list.next.val);
+                list = list.next;
+            }
+            System.out.println("}");
         }
-        System.out.println("]");
     }
 }
